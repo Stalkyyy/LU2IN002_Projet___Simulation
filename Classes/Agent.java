@@ -51,7 +51,7 @@ public abstract class Agent {
 
     /*
      * Fonction de changement de direction d'un agent.
-     * Si le hasard l'accepte, alors la nouvelle direction [dx,dy] de l'agent sera choisie aléatoirement entre -1 et 1 compris.
+     * Si le hasard l'accepte, alors la nouvelle direction [dx,dy] de l'agent sera choise aléatoirement entre -1 et 1 compris.
      */
     public void changeDirection(){
         if (Math.random() < p_ch_dir){
