@@ -8,7 +8,7 @@
 
 import java.util.ArrayList;
 
-public class Rat extends Predateur implements PredRat{
+public class Rat extends Predateur implements PredRat throws PasDeRessource{
     /*
      * C'est la classe des Rats, un prédateur.
      * Le renard se balade dans le terrain, en quête d'oeufs afin de les manger.
