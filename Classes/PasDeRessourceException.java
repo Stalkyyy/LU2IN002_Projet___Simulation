@@ -6,7 +6,7 @@
     DURBIN Deniz Ali - 21111116
 */
 
-public class PasDeRessource extends Exception {
+public class PasDeRessourceException extends Exception {
   public PasDeRessource(){
     super("Pas de ressource ici !"); 
   }
