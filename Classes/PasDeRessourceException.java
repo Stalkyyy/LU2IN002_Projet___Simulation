@@ -7,6 +7,11 @@
 */
 
 public class PasDeRessourceException extends Exception {
+  /*
+   * Cette classe permet de créer une exception si une case ne possède pas une ressource.
+   * En effet, nous voulions faire en sorte que chaque case à soit une herbe, un oeuf ou une viande.
+   */
+  
   public PasDeRessourceException(){
     super("Pas de ressource ici !"); 
   }
