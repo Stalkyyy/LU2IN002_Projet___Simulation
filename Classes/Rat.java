@@ -52,34 +52,34 @@ public class Rat extends Predateur implements PredRat{
      * S'il gagne la lutte, une autre poule l'attaque s'il y en a. S'il est toujours vivant, alors il mange l'oeuf et rajoute à ses points d'énergie la quantité d'oeufs.
      * S'il perd la lutte, il meurt.
      */
-    public void attack(ArrayList<Ressource> listRes){
-        if (!terrain.caseEstVide(x, y)){
-            Ressource res = terrain.getCase(x, y);
-            if (res.type.equals("Oeufs")){
-                for(Poule poule : Poule.getListPoules()){
-                    if (this.distance(poule.x, poule.y) <= 2){
-                        if (Math.random() < probaAttackSuccess(poule)){
-                            listPredateur.remove(this);
-                            listAgent.remove(this);
-                            nbRatMorts++;
-                            System.out.println("Echec de l'attaque du rat, il est mort !");
-                            return;
-                        }
+    public void attack(ArrayList<Ressource> listRes) throws PasDeRessourceException{
+        if (terrain.caseEstVide(x, y)) { throw new PasDeRessourceException(); }
+        
+        Ressource res = terrain.getCase(x, y);
+        if (res.type.equals("Oeufs")){
+            for(Poule poule : Poule.getListPoules()){
+                if (this.distance(poule.x, poule.y) <= 2){
+                    if (Math.random() < probaAttackSuccess(poule)){
+                        listPredateur.remove(this);
+                        listAgent.remove(this);
+                        nbRatMorts++;
+                        System.out.println("Echec de l'attaque du rat, il est mort !");
+                        return;
                     }
                 }
-
-                this.energie += res.getQuantite();
-                nbOeufMange += res.getQuantite();
-
-                listRes.remove(res);
-                terrain.videCase(x, y);
-
-                Ressource herbe = new Ressource("  __  ", 3);
-                terrain.setCase(x, y, herbe);
-                listRes.add(herbe);
-
-                System.out.println("Un rat a mangé un ou plusieurs oeufs !");
             }
+
+            this.energie += res.getQuantite();
+            nbOeufMange += res.getQuantite();
+
+            listRes.remove(res);
+            terrain.videCase(x, y);
+
+            Ressource herbe = new Ressource("  __  ", 3);
+            terrain.setCase(x, y, herbe);
+            listRes.add(herbe);
+
+            System.out.println("Un rat a mangé un ou plusieurs oeufs !");
         }
     }
 
