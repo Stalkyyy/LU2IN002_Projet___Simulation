@@ -8,7 +8,7 @@
 
 import java.util.ArrayList;
 
-public class Poule extends Agent{
+public class Poule extends Agent throws PasDeRessource{
     /*
      * Cette classe représente les poules, qui sont des agents.
      * Elle contient les constantes du temps de la repousse de l'herbe après avoir été mangée, ainsi que la probabilité qu'elle ponde un oeuf.
