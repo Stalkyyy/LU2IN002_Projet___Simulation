@@ -7,7 +7,7 @@
 */
 
 public class PasDeRessourceException extends Exception {
-  public PasDeRessource(){
+  public PasDeRessourceException(){
     super("Pas de ressource ici !"); 
   }
   
