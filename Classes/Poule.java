@@ -81,12 +81,12 @@ public class Poule extends Agent{
      * L'herbe prendre <temps_repousse_herbe> itérations avant d'être mangeable de nouveau.
      */
     public void manger(){
-        if (!terrain.caseEstVide(x, y)){
-            Ressource res = terrain.getCase(x, y);
-            if (res.type.equals("  __  ") && res.getQuantite() > 0){
-                this.energie += res.getQuantite() / 3;
-                res.setQuantite(temps_repousse_herbe);
-            }
+        if (terrain.caseEstVide(x, y)) { throw new PasDeRessource(); }
+        
+        Ressource res = terrain.getCase(x, y);
+        if (res.type.equals("  __  ") && res.getQuantite() > 0){
+            this.energie += res.getQuantite() / 3;
+            res.setQuantite(temps_repousse_herbe);
         }
     }
 
