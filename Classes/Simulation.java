@@ -111,7 +111,11 @@ public class Simulation {
         ArrayList<Poule> listPoule = new ArrayList<Poule>(Poule.getListPoules());
         for(Poule poule : listPoule){
             if (poule.checkAlive()){
-                poule.manger();
+                try {
+                    poule.manger();
+                } catch (PasDeRessourceException e) {
+                    System.out.println("Poule : " + e.toString());
+                }
                 poule.pondre(listRes);
             }
 
@@ -148,12 +152,21 @@ public class Simulation {
         for(Predateur predateur : listPredateur){
             if (predateur.checkAlive()){
                 if (predateur instanceof PredRenard){
-                    ((Renard)predateur).manger(listRes);
+                    try {
+                        ((Renard)predateur).manger(listRes);
+                    } catch (PasDeRessourceException e) {
+                        System.out.println("Renard :" + e.toString());
+                    }
                     ((Renard)predateur).attack();
                 }
 
-                else 
-                    ((Rat)predateur).attack(listRes);
+                else{
+                    try {
+                        ((Rat)predateur).attack(listRes);
+                    } catch (PasDeRessourceException e) {
+                        System.out.println("Rat : " + e.toString());
+                    }
+                }
 
                 predateur.reproduce();
             }
