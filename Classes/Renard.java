@@ -74,19 +74,19 @@ public class Renard extends Predateur implements PredRenard{
      * L'herbe repousse sur le terrain avec 3 quantités.
      */
     public void manger(ArrayList<Ressource> listRes){
-        if (!terrain.caseEstVide(x, y)){
-            Ressource res = terrain.getCase(x, y);
-            if (res.type.equals("Viande")){
-                this.energie += res.getQuantite()*5;
-                listRes.remove(res);
-                terrain.videCase(x, y);
+        if (terrain.caseEstVide(x, y)) { throw new PasDeRessource(); }
+        
+        Ressource res = terrain.getCase(x, y);
+        if (res.type.equals("Viande")){
+            this.energie += res.getQuantite()*5;
+            listRes.remove(res);
+            terrain.videCase(x, y);
 
-                Ressource herbe = new Ressource("  __  ", 3);
-                terrain.setCase(x, y, herbe);
-                listRes.add(herbe);
+            Ressource herbe = new Ressource("  __  ", 3);
+            terrain.setCase(x, y, herbe);
+            listRes.add(herbe);
 
-                System.out.println("Un renard a mangé de la viande !");
-            }
+            System.out.println("Un renard a mangé de la viande !");
         }
     }
 
