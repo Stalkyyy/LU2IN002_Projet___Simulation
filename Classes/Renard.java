@@ -8,7 +8,7 @@
 
 import java.util.ArrayList;
 
-public class Renard extends Predateur implements PredRenard{
+public class Renard extends Predateur implements PredRenard throws PasDeRessource{
     /*
      * C'est la classe des Renards, un prédateur.
      * Le renard se balade dans le terrain, en quête de poules afin de les manger.
