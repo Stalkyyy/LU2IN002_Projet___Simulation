@@ -32,3 +32,4 @@ Les oeufs placés sur la carte ont une certaine chance d'éclore. Si cela arrive
 Les renards et les rats peuvent faire des enfants. Mais ces derniers n'auront que la moitié de l'énergie du parent !
 _______________________________________________________________________________________________________________________________________________
 
+Note : 15.25/20
